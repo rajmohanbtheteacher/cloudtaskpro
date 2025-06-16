@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudtaskpro-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudtaskpro-backend
+  template:
+    metadata:
+      labels:
+        app: cloudtaskpro-backend
+    spec:
+      containers:
+      - name: backend
+        image: your-dockerhub-user/cloudtaskpro-backend:latest
+        ports:
+        - containerPort: 8080
