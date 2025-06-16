@@ -1,0 +1,58 @@
+/* Custom CloudTaskPro CI/CD Pipeline Theme */
+.node rect,
+.node circle,
+.node ellipse,
+.node polygon {
+    fill: #f9f9f9;
+    stroke: #333;
+    stroke-width: 2px;
+}
+
+.node.startNode rect {
+    fill: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    stroke: #5a67d8;
+    stroke-width: 3px;
+}
+
+.node.endNode rect {
+    fill: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    stroke: #38a169;
+    stroke-width: 3px;
+}
+
+.node.testNode rect {
+    fill: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%);
+    stroke: #e53e3e;
+    stroke-width: 2px;
+}
+
+.node.buildNode rect {
+    fill: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+    stroke: #ed8936;
+    stroke-width: 2px;
+}
+
+.edgePath path {
+    stroke: #4a5568;
+    stroke-width: 2px;
+    fill: none;
+}
+
+.arrowheadPath {
+    fill: #4a5568;
+    stroke: #4a5568;
+}
+
+/* Title styling */
+.titleBox {
+    fill: #2d3748;
+    stroke: #4a5568;
+    stroke-width: 2px;
+    rx: 5px;
+}
+
+.titleText {
+    fill: white;
+    font-size: 16px;
+    font-weight: bold;
+}
