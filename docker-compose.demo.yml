@@ -1,0 +1,46 @@
+services:
+  # Jenkins CI/CD Server
+  jenkins:
+    build: ./jenkins
+    container_name: jenkins-cicd
+    ports:
+      - "8085:8080"
+      - "50000:50000"
+    volumes:
+      - ./jenkins/jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/var/jenkins_home/workspace/cloudtaskpro
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    restart: unless-stopped
+
+  # Application Services (for testing)
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8080
+    stdin_open: true
+    tty: true
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
